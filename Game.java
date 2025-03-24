@@ -11,14 +11,16 @@
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Stephen M. Burns
+ * @version 2025.03.24
  */
 
 public class Game 
 {
     private Parser parser;
     private Room currentRoom;
+    private int healthPool;
+    private int weightLimit;
         
     /**
      * Create the game and initialise its internal map.
@@ -26,6 +28,8 @@ public class Game
     public Game() 
     {
         createRooms();
+        healthPool=100;
+        weightLimit=0;
         parser = new Parser();
     }
 
@@ -71,10 +75,16 @@ public class Game
         // execute them until the game is over.
                 
         boolean finished = false;
-        while (! finished) {
+        while (! finished && healthPool>0) {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
+        
+        if(healthPool<=0)
+        {
+            System.out.println("You have met a fate most fowl!");
+        }
+        
         System.out.println("Thank you for playing.  Good bye.");
     }
 
