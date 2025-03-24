@@ -14,6 +14,8 @@
  * @author  Stephen M. Burns
  * @version 2025.03.24
  */
+import java.util.ArrayList;
+
 
 public class Game 
 {
@@ -21,6 +23,7 @@ public class Game
     private Room currentRoom;
     private int healthPool;
     private int weightLimit;
+    private ArrayList<String> Inventory;
         
     /**
      * Create the game and initialise its internal map.
@@ -30,6 +33,7 @@ public class Game
         createRooms();
         healthPool=100;
         weightLimit=0;
+        Inventory = new ArrayList<String>(); 
         parser = new Parser();
     }
 
