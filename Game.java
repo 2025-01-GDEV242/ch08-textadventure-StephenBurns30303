@@ -21,9 +21,6 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private int healthPool;
-    private int weightLimit;
-    private ArrayList<String> Inventory;
         
     /**
      * Create the game and initialise its internal map.
@@ -31,9 +28,6 @@ public class Game
     public Game() 
     {
         createRooms();
-        healthPool=100;
-        weightLimit=0;
-        Inventory = new ArrayList<String>(); 
         parser = new Parser();
     }
 
@@ -79,15 +73,19 @@ public class Game
         // execute them until the game is over.
                 
         boolean finished = false;
-        while (! finished && healthPool>0) {
+        while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
+        
+        /*
         
         if(healthPool<=0)
         {
             System.out.println("You have met a fate most fowl!");
         }
+        
+        */
         
         System.out.println("Thank you for playing.  Good bye.");
     }
