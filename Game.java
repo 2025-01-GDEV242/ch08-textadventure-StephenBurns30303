@@ -11,9 +11,11 @@
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Stephen M. Burns
+ * @version 2025.03.24
  */
+import java.util.ArrayList;
+
 
 public class Game 
 {
@@ -75,6 +77,16 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
+        
+        /*
+        
+        if(healthPool<=0)
+        {
+            System.out.println("You have met a fate most fowl!");
+        }
+        
+        */
+        
         System.out.println("Thank you for playing.  Good bye.");
     }
 
